@@ -201,9 +201,13 @@ Per confronto: l’S&P500 ha una volatilità tra 15% e 20%.
 📊 **Sharpe Ratio**: 1.408  
 Misura quanta performance ottieni per ogni unità di rischio:
 
+![Formula2](https://github.com/FrankLucs84/Finance/blob/main/2.jpg "Formula1")
+
 \[
 \text{Sharpe} = \frac{\text{Expected Return} - \text{Risk Free Rate}}{\text{Volatility}}
 \]
+
+![Formula1](https://github.com/FrankLucs84/Finance/blob/main/1.jpg "Formula2")
 
 👉 Valore >1 è ottimo → significa portafoglio **molto efficiente**.  
 Nonostante il rendimento non elevato, **il rischio è ancora più basso**, quindi lo Sharpe è elevato.
