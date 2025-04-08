@@ -131,6 +131,12 @@ ret_ann, vol_ann, sharpe = portfolio_performance(Y, weights_array)
 ---
 
 ### 10. 📉 Calcolo CVaR (5%)
+⚠️ CVaR (5%): -0.24%
+Cosa misura?
+Il Conditional Value at Risk al 5% indica la perdita media che ci si aspetta nei peggiori giorni del 5% della distribuzione.
+Come lo interpreto?
+•	Il valore è -0.24%, quindi nei peggiori giorni (quelli molto negativi), il portafoglio perde in media solo lo 0.24% in un giorno.
+•	È un rischio molto basso: estremamente contenuto, coerente con un portafoglio difensivo e dollar-neutral.
 
 ```python
 returns_portafoglio = Y @ w
