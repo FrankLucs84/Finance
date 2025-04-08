@@ -131,12 +131,6 @@ ret_ann, vol_ann, sharpe = portfolio_performance(Y, weights_array)
 ---
 
 ### 10. 📉 Calcolo CVaR (5%)
-⚠️ CVaR (5%): -0.24%
-Cosa misura?
-Il Conditional Value at Risk al 5% indica la perdita media che ci si aspetta nei peggiori giorni del 5% della distribuzione.
-Come lo interpreto?
-•	Il valore è -0.24%, quindi nei peggiori giorni (quelli molto negativi), il portafoglio perde in media solo lo 0.24% in un giorno.
-•	È un rischio molto basso: estremamente contenuto, coerente con un portafoglio difensivo e dollar-neutral.
 
 ```python
 returns_portafoglio = Y @ w
@@ -168,14 +162,58 @@ CVaR (5%): -0.24%
 
 ---
 
-### ✅ Interpretazione
+### 🔍 Spiegazione dettagliata dei risultati
 
-| Indicatore       | Spiegazione |
-|------------------|-------------|
-| **Expected Return** | Guadagno atteso annuo |
-| **Volatility**       | Oscillazione media dei rendimenti |
-| **Sharpe Ratio**     | Efficienza del portafoglio (rendimento per unità di rischio) |
-| **CVaR (5%)**        | Perdita media nei giorni peggiori (5% peggiori rendimenti) |
+---
+
+📅 **Periodo analizzato**: 2016-01-01 → 2024-12-30  
+Hai analizzato i dati giornalieri di Borsa su un intervallo di 9 anni completi.  
+Tutto ciò che viene calcolato (rendimenti, rischio, CVaR…) si basa esclusivamente su questi dati storici.
+
+---
+
+📦 **N. asset analizzati**: 25  
+Sono i 25 titoli che hai indicato nella lista `tickers`.  
+Lo script ha scaricato i prezzi, pulito i dati e calcolato i rendimenti per tutti questi asset.
+
+---
+
+🎯 **Asset selezionati nel portafoglio**: 13  
+L’algoritmo ha deciso di assegnare un peso diverso da zero solo a 13 dei 25 asset disponibili.  
+Gli altri 12 hanno ricevuto peso zero perché **non miglioravano il rapporto rischio/rendimento**.  
+✅ Questo è normale: il portafoglio è sparso solo su titoli utili a massimizzare lo Sharpe ratio e ridurre il CVaR.
+
+---
+
+📈 **Expected Return**: 2.89%  
+Rendimento atteso annuale del portafoglio, calcolato dalle medie giornaliere ×252.  
+👉 Rendimento contenuto ma stabile, tipico dei portafogli market-neutral (budget = 0).
+
+---
+
+📉 **Volatility (Annuale)**: 2.06%  
+Oscillazione annualizzata dei rendimenti.  
+👉 Molto bassa, indica che il portafoglio è **estremamente stabile**.  
+Per confronto: l’S&P500 ha una volatilità tra 15% e 20%.
+
+---
+
+📊 **Sharpe Ratio**: 1.408  
+Misura quanta performance ottieni per ogni unità di rischio:
+
+\[
+\text{Sharpe} = \frac{\text{Expected Return} - \text{Risk Free Rate}}{\text{Volatility}}
+\]
+
+👉 Valore >1 è ottimo → significa portafoglio **molto efficiente**.  
+Nonostante il rendimento non elevato, **il rischio è ancora più basso**, quindi lo Sharpe è elevato.
+
+---
+
+⚠️ **CVaR (5%)**: -0.24%  
+Indica la **perdita media nei peggiori giorni** (i peggiori 5% della distribuzione).  
+👉 In caso di scenari molto negativi, la perdita media attesa è solo dello 0.24%.  
+✅ Questo conferma la **bassa esposizione al rischio estremo**.
 
 ---
 
@@ -188,7 +226,7 @@ CVaR (5%): -0.24%
 | `pie_chart_portfolio.png` | Grafico a torta |
 | `bar_chart_portfolio.png` | Grafico a barre |
 
-Tutti salvati in:
+Cartella di output:
 
 ```
 C:\Users\f.lucignano\Desktop\CFO\grafici_portafoglio
@@ -196,15 +234,15 @@ C:\Users\f.lucignano\Desktop\CFO\grafici_portafoglio
 
 ---
 
-## 🔁 Miglioramenti possibili
+## 🔁 Estensioni possibili
 
 | Obiettivo | Estensione |
 |----------|------------|
-| Aumentare rendimento | Consentire portafoglio solo long (senza short) |
-| Aggiungere settori | Raggruppamento e vincoli per settore o industria |
-| Report PDF | Usare `pdfkit`, `matplotlib.backends.backend_pdf`, `WeasyPrint` |
-| Dashboard interattiva | Streamlit |
-| Analisi rolling | Calcolo su finestre mobili (es. Sharpe rolling 12 mesi) |
+| Aumentare rendimento | Rimuovere `budget=0` e testare solo long |
+| Aggiungere settori | Gruppi con vincoli aggregati |
+| Generare PDF | Usare `matplotlib.backends.backend_pdf` |
+| Dashboard web | Streamlit con interattività |
+| Analisi rolling | Rolling Sharpe, volatilità mobile |
 
 ---
 
@@ -218,5 +256,4 @@ pip install yfinance matplotlib pandas riskfolio-lib
 
 ## 📚 Licenza
 
-Progetto personale e a scopo didattico. Utilizzabile liberamente per uso interno o professionale.
-
+Progetto personale e didattico. Può essere esteso e riutilizzato liberamente per scopi interni o professionali.
