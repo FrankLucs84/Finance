@@ -130,7 +130,7 @@ ret_ann, vol_ann, sharpe = portfolio_performance(Y, weights_array)
 
 ---
 
-### 10. 📉 Shape Ratio e Calcolo CVaR
+### 10. 📉 Sharpe Ratio e Calcolo CVaR
 
 ![Formula2](https://github.com/FrankLucs84/Finance/blob/main/2.jpg "Formula1")
 
