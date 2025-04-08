@@ -132,9 +132,18 @@ ret_ann, vol_ann, sharpe = portfolio_performance(Y, weights_array)
 
 ### 10. 📉 Sharpe Ratio e Calcolo CVaR
 
+- Lo *Sharpe Ratio* misura quanta performance extra ottieni per ogni unità di rischio.
+Un valore >1 è considerato molto buono
+Il tuo è 1.408, quindi il portafoglio è molto efficiente nel trasformare rischio in rendimento.
+👉 Nonostante il rendimento basso (2.89%), il rischio è ancora più basso (2.06%), perciò lo Sharpe è alto.
+
 ![Formula2](https://github.com/FrankLucs84/Finance/blob/main/2.jpg "Formula1")
 
 ![Formula1](https://github.com/FrankLucs84/Finance/blob/main/1.jpg "Formula2")
+
+- Il *Conditional Value at Risk* al 5% indica la perdita media che ci si aspetta nei peggiori giorni del 5% della distribuzione.
+Il valore è -0.24%, quindi nei peggiori giorni (quelli molto negativi), il portafoglio perde in media solo lo 0.24% in un giorno.
+È un rischio molto basso: estremamente contenuto, coerente con un portafoglio difensivo e dollar-neutral.
 
 ```python
 returns_portafoglio = Y @ w
@@ -204,11 +213,6 @@ Per confronto: l’S&P500 ha una volatilità tra 15% e 20%.
 
 📊 **Sharpe Ratio**: 1.408  
 Misura quanta performance ottieni per ogni unità di rischio:
-
-\[
-\text{Sharpe} = \frac{\text{Expected Return} - \text{Risk Free Rate}}{\text{Volatility}}
-\]
-
 👉 Valore >1 è ottimo → significa portafoglio **molto efficiente**.  
 Nonostante il rendimento non elevato, **il rischio è ancora più basso**, quindi lo Sharpe è elevato.
 
